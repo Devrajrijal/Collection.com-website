@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection login form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="log.css">
+</head>
+<body>
+    <div id="authApp" class="auth-container">
+        <!-- Login Form gjhgjgjgjgjhgjhjghjbj gnhugn -->
+        <div class="auth-form" id="loginForm" v-if="showLogin">
+            <div class="form-header">
+                <h1>Welcome Back</h1>
+                <p>Please login to continue</p>
+            </div>
+
+            <form @submit.prevent="handleLogin">
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder=" " 
+                           v-model="loginEmail" ref="loginEmailInput" @input="clearError('loginEmailInput')">
+                    <label class="form-label">Email Address</label>
+                    <div class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder=" " 
+                           v-model="loginPassword" ref="loginPasswordInput" @input="clearError('loginPasswordInput')">
+                    <label class="form-label">Password</label>
+                    <div class="error-message"></div>
+                </div>
+
+                <button type="submit" class="submit-btn">Sign In</button>
+            </form>
+
+            <div class="social-auth">
+                <div class="social-btn">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn">
+                    <i class="fab fa-apple"></i>
+                </div>
+            </div>
+
+            <p class="toggle-form" @click="toggleForms">Don't have an account? <span>Register</span></p>
+        </div>
+
+        <!-- Register Form -->
+        <div class="auth-form" id="registerForm" v-if="!showLogin">
+            <div class="form-header">
+                <h1>Create Account</h1>
+                <p>Join our community today</p>
+            </div>
+
+            <form @submit.prevent="handleRegister">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder=" " 
+                           v-model="registerName" ref="registerNameInput" @input="clearError('registerNameInput')">
+                    <label class="form-label">Full Name</label>
+                    <div class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder=" " 
+                           v-model="registerEmail" ref="registerEmailInput" @input="clearError('registerEmailInput')">
+                    <label class="form-label">Email Address</label>
+                    <div class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder=" " 
+                           v-model="registerPassword" ref="registerPasswordInput" @input="clearError('registerPasswordInput')">
+                    <label class="form-label">Password</label>
+                    <div class="error-message"></div>
+                </div>
+
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+
+            <div class="social-auth">
+                <div class="social-btn">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn">
+                    <i class="fab fa-apple"></i>
+                </div>
+            </div>
+
+            <p class="toggle-form" @click="toggleForms">Already have an account? <span>Login</span></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

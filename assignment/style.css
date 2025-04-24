@@ -1,0 +1,148 @@
+body {
+    height: 100vh;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb3b3);
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Great Vibes', cursive;
+}
+
+.stage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.stage.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.stage h1 {
+    font-size: 3em;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 65, 108, 0.7);
+    margin-bottom: 30px;
+}
+
+.stage button {
+    padding: 15px 40px;
+    font-size: 1.5em;
+    background: rgba(255, 255, 255, 0.3);
+    border: 3px solid white;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.stage button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.hand-container {
+    position: fixed;
+    display: none;
+    animation: float 3s ease-in-out infinite;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hand-container img {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(255, 65, 108, 0.7));
+    display: block;
+    margin: 0 auto;
+    border: 2px solid transparent;
+    animation: borderGlow 2s infinite linear;
+    border-radius: 20px;
+}
+
+@keyframes borderGlow {
+    0% { border-color: rgba(255,255,255,0.2); }
+    50% { border-color: rgba(255,255,255,0.8); }
+    100% { border-color: rgba(255,255,255,0.2); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) rotate(-5deg); }
+    50% { transform: translate(-50%, calc(-50% - 20px)) rotate(5deg); }
+}
+
+.message {
+    position: fixed;
+    font-size: 4em;
+    opacity: 0;
+    z-index: 1000;
+    background: linear-gradient(45deg, #ff0066, #ff4090);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 0, 102, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    animation: messagePulse 2s infinite alternate;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.message:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+@keyframes messagePulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes messageMagic {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 100px) scale(0.5);
+        filter: blur(20px);
+    }
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+        filter: blur(0);
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100px) scale(0.8);
+        filter: blur(10px);
+    }
+}
+
+.heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 30px;
+    text-shadow: 0 0 15px rgba(255,65,108,0.5);
+    animation: heartFlight 5s linear forwards;
+}
+
+@keyframes heartFlight {
+    0% {
+        opacity: 1;
+        transform: translate(var(--start-x), var(--start-y)) scale(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--end-x), var(--end-y)) scale(2) rotate(720deg);
+    }
+}
